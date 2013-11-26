@@ -1,29 +1,28 @@
 #!/usr/bin/env bash
-echo -e "\nThe following packages will be installed: \ngcc gcc-c++ make autoconf automake libtool patch bzip2 bzip2-devel readline readline-devel autoconf gdbm-devel ncurses-devel libdb-devel libffi-devel openssl-devel libyaml-devel tk-devel zlib zlib-devel bison iconv-devel sqlite libxml2 libxml2-devel libxslt libxslt-devel tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel\n"
+
+# development tools:
+PKG="gcc gcc-c++ make autoconf automake libtool patch bzip2 bzip2-devel"
+
+# Readline dependecies:
+PKG="${PKG} readline readline-devel"
+
+# additional build requirements from Fedora's spec file
+PKG="${PKG} gdbm-devel ncurses-devel libdb-devel libffi-devel openssl-devel libyaml-devel tk-devel"
+
+# Extras for RubyGems and Rails:
+PKG="${PKG} zlib zlib-devel bison glibc-common sqlite"
+
+# nokogiri dependencies:
+PKG="${PKG} libxml2 libxml2-devel libxslt libxslt-devel"
+
+# ImageMagick deps
+PKG="${PKG} tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel"
+
+echo -e "\nThe following packages will be installed: \n${PKG}\n"
 read -p "Continue? (yn): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  # Update sources:
-  sudo yum update
-
-  # development tools:
-  PKG="gcc gcc-c++ make autoconf automake libtool patch bzip2 bzip2-devel"
-
-  # Readline dependecies:
-  PKG="${PKG} readline readline-devel"
-
-  # additional build requirements from Fedora's spec file
-  PKG="${PKG} gdbm-devel ncurses-devel libdb-devel libffi-devel openssl-devel libyaml-devel tk-devel"
-
-  # Extras for RubyGems and Rails:
-  PKG="${PKG} zlib zlib-devel bison glibc-common sqlite"
-
-  # nokogiri dependencies:
-  PKG="${PKG} libxml2 libxml2-devel libxslt libxslt-devel"
-
-  # ImageMagick deps
-  PKG="${PKG} tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel"
-
   sudo yum install -y ${PKG}
 fi
+
