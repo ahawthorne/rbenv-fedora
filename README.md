@@ -7,7 +7,7 @@ So do this instead:
 
 Clone it
 --------
-typical plugin path is ~/.rbenv/plugins. 
+typical plugin path is ~/.rbenv/plugins.
 
 ```bash
 git clone git@github.com:ahawthorne/rbenv-fedora.git ~/.rbenv/plugins/rbenv-fedora

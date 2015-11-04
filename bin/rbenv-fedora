@@ -23,6 +23,6 @@ read -p "Continue? (yn): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  sudo yum install -y ${PKG}
+  sudo dnf install -y ${PKG}
 fi
 
